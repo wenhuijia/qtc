@@ -1,0 +1,239 @@
+/* 页头反回 */
+.TopGoBackNav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+  }
+  
+  .navBarTop {
+    width: 100%;
+    height: 0.4rem;
+    position: relative;
+  }
+  
+  .navBarContent {
+    height: 0.88rem;
+    width: 100%;
+    color: #fff;
+    position: relative;
+  }
+  
+  .navBarContent .titleName {
+    height: 0.88rem;
+    width: 100%;
+    line-height: 0.88rem;
+    text-align: center;
+    font-size: 0.36rem;
+    font-family: "PingFangSC-Regular";
+    color: #333;
+    font-weight: 700;
+  }
+  
+  .navBarContent i {
+    width: 0.2rem;
+    height: 0.37rem;
+    position: absolute;
+    left: 0.3rem;
+    top: 0.26rem;
+    background: url("../images/back.png") no-repeat center/100%;
+    background-size: 100% 100%;
+  }
+  .topDistance {
+    margin-top: 1.28rem;
+  }
+
+
+* {margin: 0; padding: 0; border:0 none; outline:none; -webkit-tap-highlight-color:rgba(255,255,255,0)}
+html {min-height: 100%;}
+body {width:100%; height:100%; font-family:"microsoft yahei","黑体",Arial, Helvetica, sans-serif; font-size: 0.26rem; color:#888;background:#f3f3f3;}
+
+h1,h2,h3,h4,h5,h6{font-weight:300;}
+ul,dl,li{list-style: none;}
+a {color: #606060;text-decoration: none;}
+a:hover {text-decoration: none;}
+img{display:block; border:none 0;}
+.clearfix:after{content:""; display:block; height:0; width:100%; clear:both; visibility: hidden;}
+
+
+#con{min-height:5.0rem; width:100%; background:#f3f3f3;}
+ .navBar{height:1.28rem; width:100%; padding-top:0rem;  background:#141419; color:#fff; position:fixed;left:0;top:0;z-index:1000;}
+ .navBar .titleName{margin-top:0.4rem; height:0.88rem; width:100%; line-height:0.88rem;text-align:center;font-size:0.36rem; font-weight:600; }
+ .navBar .navBackBtn{ height:0.4rem; width:1.2rem; position:absolute;left:0.4rem;top:0.64rem; }
+ .navBar .navBackBtn i{float:left;   height:0.4rem; width:0.4rem;background:url("../images/backBtn.png") no-repeat left top; background-size:100% 100%;}
+ .navBar .navBackBtn span{float:left; height:0.4rem; line-height:0.4rem; font-size:0.28rem; }
+
+
+/*轮播图*/
+#con .carImgs{width:100%; background:#fff; margin-bottom:0.2rem;position:relative;}
+#con .carImgs .swiper-container{height:3.3rem;width:100%;}
+#con .carImgs .swiper-container .swiper-slide{float:left;height:100%;width:100%;}
+#con .carImgs .detailImg{float:left;height:3.3rem;width:100%;}
+#con .carImgs .carInfo{height:0.9rem;padding:0.13rem  0.3rem;}
+#con .carImgs .carInfo .txt{height:0.5rem;line-height:0.5rem;}
+#con .carImgs .carInfo .txt .part{width:50%;float:left;}
+#con .carImgs .carInfo .carName{color:#000;font-size:0.28rem}
+#con .carImgs .carInfo  .priceNum{color:#ff5c5d;}
+.swiper-container .swiper-wrapper{background:url(../images/icon_banner_default.png)no-repeat center center;background-size:100% 100%;}
+
+/*方案一*/
+#con .plans{min-height:3.0rem; width:100%; background:#fff; padding-top:0.3rem;margin-bottom:0.01rem;}
+#con .plans .title{height:0.6rem; width:6.98rem; margin:0 auto; color:#272636; margin-bottom:0.4rem;}
+#con .plans .title .left{float:left; height:0.58rem; line-height:0.55rem;text-align:center; width:50%; border-radius:5px 0 0 5px; border:1px solid #272636; box-sizing: border-box;-webkit-box-sizing: border-box;}
+#con .plans .title .right{float:right; height:0.58rem; line-height:0.55rem;text-align:center; width:50%; border-radius:0 5px 5px 0; border:1px solid #272636;box-sizing: border-box;-webkit-box-sizing: border-box;}
+#con .plans .title .active{background:#272636; color:#fff; }
+#con .plans .box1{padding-bottom:0.46rem;}
+
+
+#con .plans .box1 .planImg{height:3.0rem; padding:0.3rem 0; width:6.3rem; margin:0 auto; position:relative; }
+#con .plans .box1 .planImg img{ height:3.0rem;width:3.0rem; position:absolute;left:50%;margin-left:-1.5rem;top:0.3rem; }
+#con .plans .box1 .planImg .txt{line-height:0.3rem;font-size:0.28rem;}
+#con .plans .box1 .planImg .txt1{color:#ff715c; position:absolute;left:0.5rem; top:1.0rem;}
+#con .plans .box1 .planImg .txt2{color:#76ceb9; position:absolute;left:0.5rem; top:2.5rem;}
+#con .plans .box1 .planImg .txt3{color:#4d88e6; position:absolute;right:-0.2rem; top:1.5rem;}
+#con .plans .box1 .planImg .txt4{color:#000; position:absolute;left:50%;margin-left:-0.3rem;top:1.4rem; height:0.7rem;width:0.6rem;line-height:0.35rem; }
+
+#con .plans .box1 .priceDetail{min-height:0.92rem; width:6.22rem; margin:0 auto;}
+#con .plans .box1 .priceDetail .p-title{height:0.26rem; line-height:0.26rem; padding:0.33rem 0; width:2.9rem; margin:0 auto;}
+
+#con .plans .box1 .priceDetail .p-title .left{float:left; height:0.26rem; width:0.4rem; background:url("../images/p-titleBg.png") no-repeat left top; background-size:100% 100%;}
+#con .plans .box1 .priceDetail .p-title .middle{float:left;height:0.26rem;width:2.1rem; line-height:0.26rem; text-align:center; font-size:0.26rem; color:#ff5c5d; font-weight:600;}
+#con .plans .box1 .priceDetail .p-title2 .middle{color:#4d9fe6;}
+
+#con .plans .box1 .priceDetail .p-title .right{float:left;height:0.26rem;width:0.4rem;background:url("../images/p-titleBg.png") no-repeat left top;background-size:100% 100%;}
+#con .plans .box1 .priceDetail .p-title2 .left{background:url("../images/p-titleBg2.png") no-repeat left top; background-size:100% 100%;}
+#con .plans .box1 .priceDetail .p-title2 .right{background:url("../images/p-titleBg2.png") no-repeat left top; background-size:100% 100%;}
+
+#con .plans .box1 .priceDetail .detail1{min-height:3.38rem;width:6.18rem;border:1px dashed #f9b6a4;}
+#con .plans .box1 .priceDetail .detail1 .txt1{height:0.7rem;line-height:0.7rem;width:100%;text-align:center;color:#000;}
+#con .plans .box1 .priceDetail .detail1 .txt2{height:0.6rem;line-height:0.6rem;width:100%;text-align:center;color:#ff5c5d; font-size:0.52rem;font-weight:600;}
+#con .plans .box1 .priceDetail .detail1 .txt3{height:0.7rem;line-height:0.7rem;width:100%;text-align:center;color:#000;}
+#con .plans .box1 .priceDetail .detail1 .txt4{height:0.6rem;line-height:0.6rem;width:100%;text-align:center;color:#ff5c5d; font-size:0.52rem;font-weight:600;}
+#con .plans .box1 .priceDetail .detail1 .txt5{padding:0.2rem; line-height:0.3rem;text-align:center;}
+#con .plans .box1 .priceDetail .detail2 {min-height:3.7rem;width:6.18rem;border:1px dashed #4d9fe6;}
+#con .plans .box1 .priceDetail .detail2 .txt1{height:0.7rem;line-height:0.7rem;width:100%;text-align:center;color:#000;}
+#con .plans .box1 .priceDetail .detail2 .txt2{height:0.6rem;line-height:0.6rem;width:100%;text-align:center;color:#4d9fe6; font-size:0.52rem;font-weight:600;}
+#con .plans .box1 .priceDetail .detail2 .txt3{height:0.7rem;line-height:0.7rem;width:100%;text-align:center;color:#000;}
+#con .plans .box1 .priceDetail .detail2 .txt4{height:0.4rem;line-height:0.4rem;width:100%;text-align:center;}
+#con .plans .box1 .priceDetail .detail2 .txt5{height:0.4rem;line-height:0.4rem;margin-left:2.35rem;}
+
+/*方案二*/
+#con .plans .box2 .planImg{height:3.0rem; padding:0.3rem 0; width:6.14rem; margin:0 auto; position:relative;}
+#con .plans .box2 .planImg img{height:3.0rem;width:3.0rem; position:absolute;left:50%;margin-left:-1.5rem;top:0.3rem; }
+#con .plans .box2 .planImg .txt{line-height:0.3rem;font-size:0.28rem;}
+#con .plans .box2 .planImg .txt1{ color:#4da2e6; position:absolute; left:0;top:1.6rem;}
+#con .plans .box2 .planImg .txt2{color:#ff5c5d; position:absolute; right:0.2rem;top:1.6rem;}
+#con .plans .box2 .planImg .txt3{ color:#000;position:absolute;left:50%;margin-left:-0.3rem;top:1.4rem; height:0.7rem;width:0.6rem;line-height:0.35rem; }
+
+
+#priceTab{width:6.2rem;height:3.2rem;margin:0 auto; border-collapse: collapse; font-size:0.32rem; margin-bottom:0.2rem;}
+#priceTab tr td{text-align:center; border:1px dashed #ededed;}
+#priceTab tr th{background:#f3f3f3;color:#000;}
+#priceTab tr .list1{color:#000;font-weight:600;}
+#priceTab tr .list2{color:#ff5c5d;font-weight:600;}
+#priceTab tr .list3{color:#ff5c5d;font-weight:600;}
+#con .plans .box2 .txt11{min-height:0.4rem; width:6.2rem; display:flex; display:-webkit-flex; margin:0 auto; line-height:0.4rem; text-align:center; padding-bottom:0.36rem;}
+#con .plans .box2 .txt11 .left{height:100%; width:1.0rem; }
+#con .plans .box2 .txt11 .left>span{ height:0.4rem; width:100%; line-height:0.4rem; text-align:center;}
+#con .plans .box2 .txt11 .right{flex:1; -webkit-flex:1; min-height:0.4rem; }
+#con .plans .box2 .txt11 .right>span{float:left; height:0.4rem; line-height:0.4rem; }
+
+#con .plans .boxHide{display:none;}
+
+#con  .applyFiles{height:3.1rem; width:100%; background:#fff; margin-bottom:0.2rem;}
+#con  .applyFiles .title{height:0.86rem; line-height:0.86rem; width:2.3rem; margin:0 auto;}
+#con  .applyFiles .title .left{float:left; height:1px; width:0.38rem; background:#000; margin:0.42rem 0;}
+#con  .applyFiles .title .middle{float:left; height:0.86rem; line-height:0.86rem; color:#000; width:1.54rem;text-align:center;}
+#con  .applyFiles .title .right{float:right; height:1px; width:0.38rem; background:#000; margin:0.42rem 0;}
+#con  .applyFiles .fileBox{ height:2.22rem; width:100%; display:flex; display:-webkit-flex; }
+#con  .applyFiles .fileBox .part{flex:1; -webkit-flex:1; }
+#con  .applyFiles .fileBox .part .f-img{ height:1.0rem; width:100%; margin-top:0.3rem; }
+#con  .applyFiles .fileBox .part .f-img>img{height:1.0rem; width:1.0rem; margin:0 auto; }
+#con  .applyFiles .fileBox .part  .txt{display:block;height:0.7rem;line-height:0.7rem;width:100%;text-align:center;}
+
+#con  .applyPro{height:3.1rem;width:100%;background:#fff; margin-bottom:0.2rem;}
+#con  .applyPro .title{height:0.86rem; line-height:0.86rem; width:2.3rem; margin:0 auto;}
+#con  .applyPro .title .left{float:left; height:1px; width:0.38rem; background:#000; margin:0.42rem 0;}
+#con  .applyPro .title .middle{float:left; height:0.86rem; line-height:0.86rem; color:#000; width:1.54rem;text-align:center;}
+#con  .applyPro .title .right{float:right; height:1px; width:0.38rem; background:#000; margin:0.42rem 0;}
+#con  .applyPro .proBox{ height:2.22rem; width:100%; display:flex; display:-webkit-flex; }
+#con  .applyPro .proBox .part{flex:1; -webkit-flex:1;position:relative;}
+#con  .applyPro .proBox .part .p-img{ height:0.5rem; width:100%; margin-top:0.3rem; margin-bottom:0.1rem; }
+#con  .applyPro .proBox .part .p-img>img{height:0.5rem; width:0.5rem; margin:0 auto; }
+#con  .applyPro .proBox .part  .txt{display:block; height:0.7rem; line-height:0.4rem; width:100%; text-align:center;}
+#con  .applyPro .proBox .part .line{display:block;height:1px;width:0.56rem;background:url("../images/line.png") no-repeat left top; background-size:100% 100%; position:absolute;top:25%;right:-12%;}
+
+/*拨打电话,立即申请*/
+#con  .bottom{height:0.98rem; width:100%;color:#fff;position:fixed;left:0;bottom:0;}
+#con  .bottom .left{float:left;height:0.98rem; width:40%; background:#fff; background-size:100% 100%;text-align:center;}
+#con  .bottom .left .con{height:0.6rem;width:2.0rem;padding-left:0.5rem;margin:0 auto; margin-top:0.17rem; position:relative;}
+#con  .bottom .left .con i{display:block;height:0.38rem;width:0.38rem;background:url("../images/tel.png") no-repeat left top; background-size:100% 100%; position:absolute;left:0.35rem;top:0.12rem;}
+#con  .bottom .left .con .free{font-size:0.26rem;color:#000;}
+#con  .bottom .left .con .time{font-size:0.18rem;color:#000;}
+#con  .bottom .right{float:left; height:0.98rem; width:60%; background:url("../images/btnBg2.png") no-repeat left top; background-size:100% 100%;;}
+#con  .bottom .right a{float:left; height:100%; width:100%; line-height:0.98rem;text-align:center;font-size:0.32rem;color:#fff;}
+
+/*查看车辆信息*/
+#con .carIntr{width:100%;height:0.88rem;background-color:#fff;margin-bottom:0.2rem;line-height:0.88rem;border-top: 1px solid #F9F9F9;}
+#con .carIntr .title{margin:0 0.35rem;}
+#con .carIntr .title .left{font-size:0.3rem;}
+#con .carIntr .title .right>img{float:right;display:inline-block;width:0.16rem;height:0.27rem;line-height:0.88rem;margin:0.31rem 0 0;}
+
+/*门店地址*/
+#con  .address{width:100%;background:#fff;}
+#con  .address .shopAddress{border-bottom:1px solid #F9F9F9;}
+#con  .address .shopAddress .title{height:0.9rem; line-height:0.9rem; width:2.3rem; margin:0 auto;}
+#con  .address .shopAddress .title .left{float:left; height:1px; width:0.38rem; background:#000; margin:0.42rem 0;}
+#con  .address .shopAddress .title .middle{float:left; height:0.9rem; line-height:0.9rem; color:#000; width:1.54rem;text-align:center;}
+#con .address .shopAddress .title .right{float:right; height:1px; width:0.38rem; background:#000; margin:0.42rem 0;}
+#con .address .addressBox{margin:0 0.35rem;}
+#con .address .addressBox .company{font-size:0.3rem;color:#000;margin-top:0.36rem;}
+#con .address .addressBox .addressDetail{padding:0.34rem 0.8rem 0.38rem 0;font-size:0.24rem;}
+#con .address .addressBox .icon{float:right;margin-top:-0.77rem;}
+#con .address .addressBox .icon img{display:inline-block;width:0.35rem;height:0.35rem;line-height:0.35rem;}
+#con .address .addressBox .distance{font-size:0.24rem;padding-bottom:0.3rem;}
+#con .address .addressBox .distance .storeDistance{font-size:0.24rem;color:#606060;margin-right:0.33rem;}
+#con .address .addressBox .distance .lately{display:none;font-size:0.24rem;color:#FFBD56;}
+
+/*查看全部门店地址*/
+#con .allShop {width:100%;height:0.88rem;line-height:0.88rem;background-color:#fff;border-top:1px solid #f9f9f9;margin-bottom:0.2rem;}
+#con .allShop .title{margin:0 0.35rem;}
+#con .allShop .title .left{font-size:0.3rem;}
+#con .allShop .title .right>img{float:right;display:inline-block;width:0.16rem;height:0.27rem;line-height:0.88rem;margin:0.31rem 0 0;}
+
+/* 常见问题 */
+#con  .commonPro {min-height:3.0rem; width:100%; background:#fff; padding-bottom:1.0rem;}
+#con  .commonPro .title {height:0.86rem; line-height:0.86rem; width:2.3rem; margin:0 auto;}
+#con  .commonPro .title .left{float:left; height:1px; width:0.38rem; background:#000; margin:0.42rem 0;}
+#con  .commonPro .title .middle{float:left; height:0.86rem; line-height:0.86rem; color:#000; width:1.54rem; text-align:center;}
+#con  .commonPro .title .right{float:right; height:1px; width:0.38rem; background:#000; margin:0.42rem 0;}
+#con  .commonPro .proBox{min-height:2.0rem; padding-left:0.3rem; }
+#con  .commonPro .proBox .que{height:0.3rem; padding-left:0.55rem; margin-bottom:0.35rem; color:#333; position:relative;}
+#con  .commonPro .proBox .que span{float:left;height:0.3rem;line-height:0.3rem;text-align:left;}
+#con  .commonPro .proBox .que>i{display:block; height:0.3rem; width:0.3rem; background:url("../images/proBg.png") no-repeat left top; background-size:100% 100%; position:absolute;left:0;top:0;}
+#con  .commonPro .proBox .ans{line-height:0.3rem; margin-bottom:0.35rem;}
+#con  .commonPro .linkBtn{display:block;height:0.6rem;width:2.3rem;line-height:0.6rem;margin:0 auto; color:#000; font-size:0.32rem; position:relative;padding-bottom:0.3rem;}
+#con  .commonPro .linkBtn i{display:block;height:0.22rem;width:0.33rem;position:absolute;right:0;top:0.19rem;background:url("../images/markBg.png") no-repeat left top; background-size:100% 100%;}
+/*猜你喜欢*/
+#con .like{width:100%;height:0.9rem;line-height:0.9rem;}
+#con .like .title{text-align:center;}
+/*单行图片与字体要垂直居中显示,设置vertical-align必须设置在行内元素,此属性只适于行内元素*/
+#con .like .title span>img{display:inline-block;width:0.32rem;height:0.28rem;margin-right:0.14rem;vertical-align:middle;}
+#con .like .title .guessLike{font-size:0.3rem;vertical-align:middle;}
+
+/*猜你喜欢的车*/
+/*外层设置padding-bottom:1rem滚动时防止底部挡住信息看不全*/
+#con .likeCar{padding-bottom:0.8rem;}
+#con .likeCar .likeInfo{width:100%;height:3rem;background:#fff;margin-bottom:0.2rem;display:flex;flex:1;}
+#con .likeCar .likeInfo .carImg{width:2.3rem;height:2rem;margin:0.4rem 0.25rem 0 0.15rem;text-align:center;}
+#con .likeCar .likeInfo .carImg img{width:160%;height:110%;}
+#con .likeCar .likeInfo .carPrice{width:60%;margin:0.45rem 0.2rem 0 0.3rem;}
+#con .likeCar .likeInfo .carPrice h3{font-size:0.3rem;font-weight:400;color:#000;}
+#con .likeCar .likeInfo .carPrice p{font-size:0.24rem;margin-top:0.12rem;}
+#con .likeCar .likeInfo .carPrice .safe{margin-top:0.12rem;}
+#con .likeCar .likeInfo .carPrice .red,.redColor{font-size:0.26rem;color:#FF5C5D;}
+#con .likeCar .likeInfo .carPrice .blue,.blueColor{font-size:0.26rem;color:#7EBAE4;}
+#con .likeCar .box2 .active{background:#e4393c;}

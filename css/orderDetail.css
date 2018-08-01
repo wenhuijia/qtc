@@ -1,0 +1,87 @@
+* {margin: 0; padding: 0; border:0 none; outline:none; -webkit-tap-highlight-color:rgba(255,255,255,0)}
+html {height: 100%;}
+body {width:100%; height:100%; font-family:"microsoft yahei","黑体",Arial, Helvetica, sans-serif; font-size: 0.26rem; color:#888;}
+h1,h2,h3,h4,h5,h6{font-weight:300;}
+ul,dl,li{list-style: none;}
+a {color: #606060;text-decoration: none;}
+a:hover {text-decoration: none;}
+img{display:block; border:none 0;}
+.clearfix:after{content:""; display:block; height:0; width:100%; clear:both; visibility: hidden;}
+
+#con{height:100%;width:100%;background:#f3f3f3;display:flex; display:-webkit-flex; flex-direction:column; -webkit-flex-direction: column;}
+#con .con-title{height:1.28rem;line-height:0.88rem; width:100%; background:#fff; position:fixed;top:0;left:0; z-index:1000; }
+#con .con-title-black{background:#353539; color:#fff; }
+#con .con-title .emptyBox{height:0.4rem;width:100%;background:#fff; color:#000;}
+#con .con-title .emptyBox-black{background:#353539;}
+#con .con-title .txt{height:0.88rem;width:100%; line-height:0.88rem; text-align:center;font-size:0.32rem; margin:0;}
+#con .con-title .backBtn{height:0.36rem; line-height:0.36rem; padding-left:0.35rem;position: absolute;left:0.25rem;top:0.64rem;font-size:0.32rem; }
+#con .con-title .backBtn>i{display:block; height:0.4rem; width:0.4rem;background:url("../images/backBtn.png") no-repeat left top;background-size:100% 100%;position:absolute;left:0;top:0;}
+#con .con-title .backBtn .icon2{display:block; height:0.4rem; width:0.4rem;background:url("../images/backBtn2.png") no-repeat left top;background-size:100% 100%;position:absolute;left:0;top:0;}
+
+.order-con{ min-height:5.0rem;width:100%; padding-top:1.28rem; }
+.order-car{height:1.4rem;padding:0.25rem 0.3rem;background:#fff;margin-bottom:0.2rem;display:flex;display:-webkit-flex;}
+.order-car .car-img{height:1.4rem;width:1.62rem; margin-right:0.4rem;}
+.order-car .car-img>img{float:left;height:100%;width:100%; border-radius:5px;}
+.order-car .car-name{flex:1; -webkit-flex:1;}
+.order-car .car-name .name{min-height:0.36rem;line-height:0.36rem;padding:0.1rem 0;font-size:0.28rem;color:#000;}
+.order-car .car-name .order-time{height:0.72rem; line-height:0.72rem;font-size:0.24rem;}
+.order-car .car-name .order-time>span{color:#ff6d5d;}
+
+.order-plan{min-height:3.0rem;width:100%;padding-bottom:0.6rem; background:#fff;}
+.order-plan .box .plan-name{height:0.4rem;line-height:0.4rem;width:100%; font-size:0.32rem; color:#000; text-align:center; padding-top:0.3rem; padding-bottom:0.3rem;}
+.order-plan .box1 .planImg{height:3.0rem; padding:0.3rem 0; width:6.3rem; margin:0 auto; position:relative; }
+.order-plan .box1 .planImg img{ height:3.0rem;width:3.0rem; position:absolute;left:50%;margin-left:-1.5rem;top:0.3rem; }
+.order-plan .box1 .planImg .txt{line-height:0.3rem;font-size:0.28rem;}
+.order-plan .box1 .planImg .txt1{color:#ff715c; position:absolute;left:0.5rem; top:1.0rem;}
+.order-plan .box1 .planImg .txt2{color:#76ceb9; position:absolute;left:0.5rem; top:2.5rem;}
+.order-plan .box1 .planImg .txt3{color:#4d88e6; position:absolute;right:-0.2rem; top:1.5rem;}
+.order-plan .box1 .planImg .txt4{color:#000; position:absolute;left:50%;margin-left:-0.3rem;top:1.4rem; height:0.7rem;width:0.6rem;line-height:0.35rem; }
+
+
+.order-plan .box1 .priceDetail{min-height:0.92rem; width:6.22rem; margin:0 auto;}
+.order-plan .box1 .priceDetail .p-title{height:0.26rem; line-height:0.26rem; padding:0.33rem 0; width:2.9rem; margin:0 auto;}
+
+.order-plan .box1 .priceDetail .p-title .left{float:left; height:0.26rem; width:0.4rem; background:url("../images/p-titleBg.png") no-repeat left top; background-size:100% 100%;}
+.order-plan .box1 .priceDetail .p-title .middle{float:left;height:0.26rem;width:2.1rem; line-height:0.26rem; text-align:center; font-size:0.26rem; color:#ff5c5d; font-weight:600;}
+.order-plan .box1 .priceDetail .p-title2 .middle{color:#4d9fe6;}
+
+.order-plan .box1 .priceDetail .p-title .right{float:left;height:0.26rem;width:0.4rem;background:url("../images/p-titleBg.png") no-repeat left top;background-size:100% 100%;}
+.order-plan .box1 .priceDetail .p-title2 .left{background:url("../images/p-titleBg2.png") no-repeat left top; background-size:100% 100%;}
+.order-plan .box1 .priceDetail .p-title2 .right{background:url("../images/p-titleBg2.png") no-repeat left top; background-size:100% 100%;}
+
+.order-plan .box1 .priceDetail .detail1{min-height:3.38rem;width:6.18rem;border:1px dashed #f9b6a4;}
+.order-plan .box1 .priceDetail .detail1 .txt1{height:0.7rem;line-height:0.7rem;width:100%;text-align:center;color:#000;}
+.order-plan .box1 .priceDetail .detail1 .txt2{height:0.6rem;line-height:0.6rem;width:100%;text-align:center;color:#ff5c5d; font-size:0.52rem;font-weight:600;}
+.order-plan .box1 .priceDetail .detail1 .txt3{height:0.7rem;line-height:0.7rem;width:100%;text-align:center;color:#000;}
+.order-plan .box1 .priceDetail .detail1 .txt4{height:0.6rem;line-height:0.6rem;width:100%;text-align:center;color:#ff5c5d; font-size:0.52rem;font-weight:600;}
+.order-plan .box1 .priceDetail .detail1 .txt5{padding:0.2rem; line-height:0.3rem;text-align:center;}
+.order-plan .box1 .priceDetail .detail2 {min-height:3.38rem;width:6.18rem;border:1px dashed #4d9fe6;}
+.order-plan .box1 .priceDetail .detail2 .txt1{height:0.7rem;line-height:0.7rem;width:100%;text-align:center;color:#000;}
+.order-plan .box1 .priceDetail .detail2 .txt2{height:0.6rem;line-height:0.6rem;width:100%;text-align:center;color:#4d9fe6; font-size:0.52rem;font-weight:600;}
+.order-plan .box1 .priceDetail .detail2 .txt3{height:0.7rem;line-height:0.7rem;width:100%;text-align:center;color:#000;}
+.order-plan .box1 .priceDetail .detail2 .txt4{height:0.24rem;line-height:0.24rem;width:100%;text-align:center; margin-bottom:0.12rem;}
+.order-plan .box1 .priceDetail .detail2 .txt5{height:0.8rem;line-height:0.4rem;width:100%;text-align:center;}
+
+.order-plan .box2 .planImg{height:3.0rem; padding:0.3rem 0; width:6.14rem; margin:0 auto; position:relative;}
+.order-plan .box2 .planImg img{height:3.0rem;width:3.0rem; position:absolute;left:50%;margin-left:-1.5rem;top:0.3rem; }
+.order-plan .box2 .planImg .txt{line-height:0.3rem;font-size:0.28rem;}
+.order-plan .box2 .planImg .txt1{ color:#4da2e6; position:absolute; left:0;top:1.6rem;}
+.order-plan .box2 .planImg .txt2{color:#ff5c5d; position:absolute; right:0.2rem;top:1.6rem;}
+.order-plan .box2 .planImg .txt3{ color:#000;position:absolute;left:50%;margin-left:-0.3rem;top:1.4rem; height:0.7rem;width:0.6rem;line-height:0.35rem; }
+
+
+
+
+#priceTab{width:6.2rem;height:3.2rem;margin:0 auto; border-collapse: collapse; font-size:0.32rem; margin-bottom:0.2rem;}
+#priceTab tr td{text-align:center; border:1px dashed #ededed;}
+#priceTab tr th{background:#f3f3f3;color:#000;}
+#priceTab tr .list1{color:#000;font-weight:600;}
+#priceTab tr .list2{color:#ff5c5d;font-weight:600;}
+#priceTab tr .list3{color:#ff5c5d;font-weight:600;}
+.order-plan .box2 .txt11{min-height:0.4rem; width:6.2rem; display:flex; display:-webkit-flex; margin:0 auto; line-height:0.4rem; text-align:center; padding-bottom:0.36rem;}
+.order-plan .box2 .txt11 .left{height:100%; width:1.0rem; }
+.order-plan .box2 .txt11 .left>span{ height:0.4rem; width:100%; line-height:0.4rem; text-align:center;}
+.order-plan .box2 .txt11 .right{flex:1; -webkit-flex:1; min-height:0.4rem; }
+.order-plan .box2 .txt11 .right>span{float:left; height:0.4rem; line-height:0.4rem;width:100%;text-align:left; }
+
+#con .order-plan .boxHide{display:none;}

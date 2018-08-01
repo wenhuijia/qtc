@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+<script src="./js/jquery-1.7.2.min.js"></script>
+<script>
+         var data = {
+            "account":"25555",
+            "programId":"1",
+            "productId":"4",
+            "name":"wen",
+            "sex":"0",
+            "telePhone":"13892256565",
+            "storeId":"0",
+            "leaveWord":"这是留言"
+            
+        }
+        // $.ajax({
+        //                 // url: jumpUrl+'rcbms/product/addWXAppointment',
+        //                 url: 'http://10.81.2.48:8088/rcbms/product/addWXAppointment',
+        //                 type: "post",
+        //                 data: data,
+        //                 contentType: "application/json; charset=utf-8",
+        //                 dataType: "json",
+        //                 success: function (data) {
+        //                     console.log(data)
+        //                     if (data.returnCode == '200') {
+        //                         // window.location.href = '/qtc/suc?id='+json.id;
+        //                         window.location.href = 'page4.html';
+        //                     } else {
+        //                        $('.myLayerButton').text(data.returnMessage);
+        //                     }
+        //                 }
+        //             });
+        $.ajax({
+        type: "post",
+        url: 'http://10.81.2.48:8088/rcbms/product/addWXAppointment',
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'JSON',
+        success: function (data) {
+            
+            console.log(data)
+          
+        },
+        error: function (result) {}
+    });
+</script>

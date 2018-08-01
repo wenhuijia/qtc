@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="format-detection" content="email=no"/>
+  <title>牵台车</title>
+  <script type="text/javascript" src="js/public.js"></script>
+  <!--<link rel="stylesheet" href="css/keyboardCommon.css">-->
+  <link rel="stylesheet" href="css/carInfo.css">
+  <link rel="stylesheet" href="css/mui/mui.picker.min.css">
+  <link rel="stylesheet" href="css/mui/mui.poppicker.css">
+  <!--<link rel="stylesheet" href="css/idcode.css">-->
+  <!--<link rel="stylesheet" href="css/keyboard.css">-->
+</head>
+<body>
+<div class="navBar">
+  <p class="navBackBtn backBtn">
+    <i></i>
+    <span>返回</span>
+  </p>
+  <p class="titleName">车辆信息</p>
+</div>
+<div id="con">
+  <!--车辆信息汇总-->
+  <div id="carInfoWrap">
+    <!--城市选择-->
+    <div class="cityBox">
+      <P class="left">城市</P>
+      <p class="right" id="showCityPicker">
+        <!--<input type="text" name="city" id="cityResult" placeholder="请选择">-->
+        <span id="cityResult">请选择</span>
+        <img src="images/inputBg.png">
+      </p>
+    </div>
+    <!--车牌号-->
+    <div id="carWrap">
+      <div class="carNumber1">车牌号</div>
+      <input type="text" maxlength="6" id="textval" placeholder="请输入" required
+             onkeyup="value=value.replace(/[\W]/g,'') "
+             onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+      <div id="carNumber2"></div>
+    </div>
+    <!--发动机号、车架号码-->
+    <div class="carBox">
+      <div class="content">
+        <ul class="detail">
+          <!--发动机号、车架号只能输入数字和字母,输入中文会被替换掉-->
+          <li class="motor"><label>发动机号</label><input type="text" name="car_motor" class="car_motor" id="car_motor"
+                                                      placeholder="请输入发动机号码" onkeyup="value=value.replace(/[\W]/g,'') "
+                                                      onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+          </li>
+          <li class="shelf"><label>车架号</label><input type="text" name="car_shelf" class="car_shelf" id="car_shelf"
+                                                     placeholder="请输入车架号码" onkeyup="value=value.replace(/[\W]/g,'') "
+                                                     onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+          </li>
+          <li class="verify">
+            <label>验证码</label>
+            <span id="idcode" style="float:right;"></span>
+            <img id="img" style="width:1.6rem;height: 0.62rem;float: right;line-height: 0.62rem;margin-top: 0.2rem;">
+            <input type="text" id="Txtidcode" class="txtVerification" maxlength="4" required/>
+          </li>
+        </ul>
+      </div>
+      <div class="check">
+        <p>注：违章查询每天可查询5次</p>
+      </div>
+    </div>
+    <!--自定义错误弹出框-->
+    <div id="alertDisplay">
+      <div id="bg"></div>
+      <div id="carName">
+        <div class="left">该车牌号不存在或填写错误</div>
+        <div id="myClose">我知道了</div>
+      </div>
+    </div>
+  </div>
+  <!--违章处理查询-->
+  <div id="appointment">
+    <!--&lt;!&ndash;车牌号&ndash;&gt;-->
+    <!--<div class="carNumber">粤B H40U40</div>-->
+    <!--&lt;!&ndash;违章、罚款、扣分部分&ndash;&gt;-->
+    <!--<div class="mistake">-->
+    <!--<div>-->
+    <!--<p class="number">1</p>-->
+    <!--<p class="txt">违章</p>-->
+    <!--</div>-->
+    <!--<div>-->
+    <!--<p class="number" id="moneycount">&yen;300</p>-->
+    <!--<p class="txt">罚款</p>-->
+    <!--</div>-->
+    <!--<div>-->
+    <!--<p class="number" id="degree">6</p>-->
+    <!--<p class="txt">扣分</p>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="mistakeDetail">-->
+    <!--<p class="time"><span>违章时间:</span>&nbsp;&nbsp;2017/04/24 19:00</p>-->
+    <!--<p class="txt" style="height:1.3rem"><span>违章地点:</span>&nbsp;&nbsp;驾驶机动车压实线驾驶机动车压实线</p>-->
+    <!--<p class="txt"><span>违章内容:</span>&nbsp;&nbsp;驾驶机动车压实线驾驶机动车压实线驾驶机动车压实线驾驶机动车压实线驾驶机动车压实线驾驶机动车压实线</p>-->
+    <!--<div class="pay">-->
+    <!--<div>罚款金额<span> &yen;300</span></div>-->
+    <!--<div>扣分<span> 6</span></div>-->
+    <!--<div>服务费<span> &yen;200</span></div>-->
+    <!--</div>-->
+    <!--</div>-->
+  </div>
+  <!--加载慢显示的图标-->
+  <div id="loadImg"></div>
+  <!--自定义遮罩层-->
+  <div id="masks"></div>
+  <!--确定按钮-->
+  <div class="btn">
+    <button class="submitBtn1" type="button">切换车辆</button>
+    <button class="submitBtn2" type="button">确定</button>
+  </div>
+</div>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/mui/mui.min.js"></script>
+<script src="js/mui/mui.picker.min.js"></script>
+<script src="js/city.data.js"></script>
+<script>
+  var cityname = ""; //创建城市全局变量
+  var mProvinceShort = ""; //创建省份简称全局变量
+  var carNumber = ""; //
+  var mcarenginelen = ""; //创建发动机号全局变量
+  var mcarcodelen = ""; //创建车架号全局变量
+
+  //请求头需要用token
+  var mToken = "";
+  var mAccount = "1234";
+
+  // 提供给android调用，将token传递过来
+  function sendTokenAndUserPhoneToJs(token, account) {
+    mToken = token;
+    mAccount = account;
+    console.log(mAccount);
+    $('#img').attr("src", baseUrl + "violation/getPicVerifyCode?account=" + mAccount);//验证码初始化,务必要放前面，否则验证码加载不出来
+  }
+  //本地测试要解开才能测
+ // $('#img').attr("src", baseUrl + "violation/getPicVerifyCode?account=" + mAccount);//验证码初始化,务必要放前面，否则验证码加载不出来
+
+  var violationData;//初始违章数据全局变量
+
+  $(function () {
+    // 判断是否是微信
+    if (isWeiXin()) {
+      $(".navBar").hide();
+      $("#con").css({"padding-top": "0"});
+    } else {
+      // 判断是否是安卓
+      var isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1;
+      if (isAndroid) {
+        $(".navBar").css({"padding-top": "0"});
+        $("#con").css({"padding-top": "0.88rem"});
+        $(".navBackBtn").css({"top": "0.24rem"});
+      }
+    }
+
+    // 在app里取消查看全部车型
+    if (!isWeiXin() && equipment() == 'IOS') {
+      $(".linkBtn").css({"display": "none"});
+      $(".carImgs .backBtn").css({"display": "none"});
+    }
+
+    //点击“返回”按钮判断跳转h5页面还是原生页面
+    $(".backBtn").on("click", function () {
+      var titleName = $('.navBar .titleName').html();
+      if (titleName == "车辆信息") {
+        window.NativeMethod.callDetailFinishActivity();//调用Android的方法跳转到原生首页
+      } else {
+        $('.navBar .titleName').html("车辆信息");
+        $('#appointment').hide();//违章处理显示
+        $('#carInfoWrap').show();//车辆信息隐藏
+      }
+    });
+
+    //错误弹出框显示
+    function showErrorTip(message) {
+      $('#alertDisplay .left').html(message);
+      $('#alertDisplay').show();
+    };
+
+    //点击我知道
+    $("#myClose").click(function () {
+      $('#alertDisplay').hide();//这里不能用remove(),用了输入错误后所有输入正确都被清空
+      if ($('#alertDisplay .left').html() == "当前城市不支持违章查询") {
+        location.reload();
+      }
+    });
+
+    //点击确定按钮跳转到违章处理
+    $('.submitBtn2').click(function () {
+      var cityResult = $('#cityResult').text();//获取城市
+      var carNumber2 = $('#carNumber2').text();//获取省份简称
+      var textval = $('#textval').val();//获取车牌号
+      var car_motors = $('#car_motor').val();//获取发动机号
+      var car_shelfs = $('#car_shelf').val();//获取车架号
+      var Txtidcodes = $('#Txtidcode').val();//获取验证码
+
+      if (cityResult == "请选择") {
+        showErrorTip("请选择城市");
+        return false;
+      }
+      if (carNumber2 == "") {
+        showErrorTip("请选择城市");
+        return false;
+      }
+      if (textval == "") {
+        showErrorTip("请填写正确信息");
+        return false;
+      }
+      if (!$('.detail li:first-child').is(":hidden")) {
+        if (car_motors == "") {
+          showErrorTip("请填写正确信息");
+          return false;
+        }
+      }
+      if (!$('.detail li:nth-child(2)').is(":hidden")) {
+        if (car_shelfs == "") {
+          showErrorTip("请填写正确信息");
+          return false;
+        }
+      }
+      if (Txtidcodes == "") {
+        showErrorTip("请输入验证码");
+        return false;
+      }
+
+      //调用违章查询后台接口
+      $.ajax({
+        type: "GET",
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Authorization": mToken
+        },
+        beforeSend:function () {
+          $('#loadImg').show();//加载图标显示
+        },
+        complete:function(){
+          $('#loadImg').hide();//加载图标隐藏
+        },
+        data: {
+          carnumber: carNumber2 + textval,
+          enginenumber: car_motors,
+          framenumber: car_shelfs,
+          verifyCode: Txtidcodes,
+          account: mAccount
+        },
+        url: baseUrl + "violation/search",
+        success: function (data) {
+          //console.info( carNumber2 + textval+'-'+car_motors+'---'+car_shelfs+'--'+Txtidcodes);
+          //如果返回状态码是204，提示每天只能查询五次
+          if (JSON.parse(data).returnCode == "204") {
+            showErrorTip("违章查询超过5次查询");
+          }
+          //如果返回状态码是200为成功0
+          if (JSON.parse(data).returnCode == "200") {
+            console.log(JSON.parse(data).returnCode);
+            //成功时违单查询和切换车辆按钮显示，确认隐藏
+            //violationData=JSON.stringify(data);
+            var result = JSON.parse(data).result;
+            //location.href="mistake.html?carnumber="+carNumber2+textval+"&enginenumber="+car_motor+"&framenumber="+car_shelf+"&verifyCode="+Txtidcode+"&account="+123456;
+
+            $("#myClose").click(function () {
+              $('#alertDisplay').hide();//这里不能用remove(),用了输入错误后所有输入正确都被清空
+              location.reload();//当输入错误点我知道重新再输入时，会自动刷新把错误删掉
+            });
+
+            //点击确认按钮时切换成切换车辆按钮
+            $('#appointment').show();//违章处理显示
+            $('#carInfoWrap').hide();//车辆信息隐藏
+            $('.submitBtn2').hide();//确认按钮隐藏
+            $('.submitBtn1').show();//切换车辆显示
+            $('.navBar .titleName').html("违章处理");
+
+            var s = "";
+            s += "<div class='carNumber'>" + carNumber2 + " " + textval + "</div>";
+            s += "<div class='mistake'>";
+            s += "<div>";
+            s += "<p class='number'>" + result.length + "次</p>";
+            s += "<p class='txt'>违章</p>";
+            s += "</div>";
+            s += "<div>";
+            s += "<p class='number' id='moneycount'>0</p>";
+            s += "<p class='txt'>罚款</p>";
+            s += "</div>";
+            s += "<div>";
+            s += "<p class='number' id='degree'>0</p>";
+            s += "<p class='txt'>扣分</p>";
+            s += " </div>";
+            s += "</div>";
+
+            var moneycount = 0;//定义罚款全局变量
+            var degree = 0;//定义扣分全局变量
+            for (var i = 0; i < result.length; i++) {
+              moneycount += parseInt(result[i].count);
+              degree += parseInt(result[i].degree);
+              s += "<div class='mistakeDetail'>";
+              s += "<p class='time'><span>违章时间:</span>&nbsp;&nbsp;" + result[i].time + "</p>";
+              s += "<p class='txt' style='height:1.3rem'><span>违章地点:</span>&nbsp;&nbsp;" + result[i].location + "</p>";
+              s += "<p class='txt'><span>违章内容:</span>&nbsp;&nbsp;" + result[i].reason + "</p>";
+              s += "<div class='pay'>";
+              s += "<div>罚款金额<span> &yen;" + result[i].count + "</span></div>";
+              s += "<div>扣分<span>" + result[i].degree + "分</span></div>";
+              s += "<div>服务费<span> &yen;" + result[i].cooperpoundge + "</span></div>";
+              s += "</div>";
+              s += "</div>";
+              s += "</div>";
+            }
+            $('#appointment').html(s);//按请求的数据渲染页面
+            $('#moneycount').html("&yen;" + moneycount);//将罚款相加的值赋值罚款
+            $('#degree').html(degree + "分");//将扣分相加的值赋值扣分
+          } else {
+            //失败提示信息
+            showErrorTip(JSON.parse(data).returnMessage);
+            //请求失败刷新验证码
+            $('#img').attr('src', baseUrl + 'violation/getPicVerifyCode?account=' + mAccount + '&number=' + Math.random());
+          }
+        }
+      })
+    });
+
+    //点击切换车辆按钮时刷新页面
+    $('.submitBtn1').click(function () {
+      location.reload(true);
+    })
+
+    //点击刷新验证码，不需要重新请求否则会拿到两个验证码,验证会失败,只需要随机刷新验证码
+    $('.verify img').click(function () {
+      $('#img').attr('src', baseUrl + 'violation/getPicVerifyCode?account=' + mAccount + '&number=' + Math.random());
+    });
+  });
+
+  //错误弹出框显示
+  function showErrorTip(message) {
+    $('#alertDisplay .left').html(message);
+    $('#alertDisplay').show();
+  };
+
+  //选择城市
+  (function ($, doc) {
+    $.init();
+    $.ready(function () {
+      //二级联动
+      var cityPicker = new $.PopPicker({
+        layer: 2
+      });
+      cityPicker.setData(cityData);
+      var showCityPicker = document.getElementById('showCityPicker');
+      var cityResult = document.getElementById('cityResult');
+      showCityPicker.addEventListener('tap', function (event) {
+        cityPicker.show(function (items) {
+          //点击确认按钮时取消遮罩
+          document.getElementById('masks').style.display = "none";
+          cityResult.innerText = items[0].text + " " + items[1].text;
+          cityResult.style.color = '#303030';
+          //返回 false 可以阻止选择框的关闭
+          //return false;
+          //如果下标0内容有市就选择0，否则选择1；截取城市不包含市，包含+1
+          cityname = items[0].text.indexOf("市") != -1 ? items[0].text : items[1].text;
+          console.log(cityname);
+          cityname = cityname.substr(0, cityname.indexOf("市"));
+          console.log(cityname);
+          $.ajax({
+            type: 'GET',
+            headers: {"Content-Type": "application/json;charset=UTF-8"},
+            url: baseUrl + 'violation/condition?cityname=' + cityname,
+            success: function (data) {
+              //重新点击请选择时将车牌号、发动机号、车架号、验证码清空
+              document.getElementById('textval').value='';
+              document.getElementById('car_motor').value='';
+              document.getElementById('car_shelf').value='';
+              document.getElementById('Txtidcode').value='';
+
+              console.log(data);
+              var data = JSON.parse(data);
+              console.log(data);
+              if (data.returnCode == "201") {
+                showErrorTip(data.returnMessage);
+              } else if (data.returnCode == "202") {
+                showErrorTip("查询失败，请稍后再试");
+              } else {
+                mProvinceShort = data.result[0].carnumberprefix;//获得省份简称
+                document.getElementById('carNumber2').innerHTML = mProvinceShort;
+                mcarenginelen = data.result[0].carenginelen;//获得发动机号值
+                console.log(mcarenginelen);
+                mcarcodelen = data.result[0].carcodelen;  //获得车架号值
+                var motor = document.getElementsByClassName('motor')[0];//获取发动机号整个li
+                var shelf = document.getElementsByClassName('shelf')[0];//获取车架号整个li
+                var carMotor = document.getElementById('car_motor');
+                if (parseInt(mcarenginelen) > 0 && parseInt(mcarenginelen) < 10) {
+                  carMotor.setAttribute("placeholder", "请输入发动机号后" + mcarenginelen + "位");
+                  motor.style.display = "block";
+                } else if (parseInt(mcarenginelen) > 10) {
+                  carMotor.setAttribute("placeholder", "请输入发动机全部位数");
+                  motor.style.display = "block";
+                } else {
+                  motor.style.display = "none";
+                }
+                if (mcarcodelen != 0) {
+                  var carShelf = document.getElementById('car_shelf');
+                  carShelf.setAttribute('placeholder', '请输入车架号后' + mcarcodelen + '位');
+                  shelf.style.display = "block";
+                } else {
+                  shelf.style.display = "none";
+                }
+              }
+            },
+            error: function (data) {
+              console.log("失败");
+            }
+          });
+        });
+        //弹出城市框时添加遮罩
+        document.getElementById('masks').style.display = "block";
+      }, false);
+    });
+  })(mui, document);
+</script>
+</body>
+</html>

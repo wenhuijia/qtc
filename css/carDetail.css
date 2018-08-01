@@ -1,0 +1,81 @@
+/* 页头反回 */
+.TopGoBackNav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+  }
+  
+  .navBarTop {
+    width: 100%;
+    height: 0.4rem;
+    position: relative;
+  }
+  
+  .navBarContent {
+    height: 0.88rem;
+    width: 100%;
+    color: #fff;
+    position: relative;
+  }
+  
+  .navBarContent .titleName {
+    height: 0.88rem;
+    width: 100%;
+    line-height: 0.88rem;
+    text-align: center;
+    font-size: 0.36rem;
+    font-family: "PingFangSC-Regular";
+    color: #333;
+    font-weight: 700;
+  }
+  
+  .navBarContent i {
+    width: 0.2rem;
+    height: 0.37rem;
+    position: absolute;
+    left: 0.3rem;
+    top: 0.26rem;
+    background: url("../images/back.png") no-repeat center/100%;
+    background-size: 100% 100%;
+  }
+  .topDistance {
+    margin-top: 1.28rem;
+  }
+* {margin: 0; padding: 0; border:0 none; outline:none; -webkit-tap-highlight-color:rgba(255,255,255,0)}
+html {min-height: 100%;}
+body {width:100%; height:100%; font-family:"microsoft yahei","黑体",Arial, Helvetica, sans-serif; font-size: 0.26rem; color:#888;background:#f3f3f3;}
+
+h1,h2,h3,h4,h5,h6{font-weight:300;}
+ul,dl,li{list-style: none;}
+a {color: #606060;text-decoration: none;}
+a:hover {text-decoration: none;}
+img{display:block; border:none 0;}
+.clearfix:after{content:""; display:block; height:0; width:100%; clear:both; visibility: hidden;}
+
+/*头部导航*/
+#con{height:100%; width:100%; }
+.navBar{height:0.88rem; width:100%; padding-top:0.4rem;  background:#141419; color:#fff; position:fixed;left:0;top:0;z-index:1000;}
+.navBar .titleName{ height:0.88rem; width:100%; line-height:0.88rem;text-align:center;font-size:0.36rem; font-weight:600; }
+.navBar .navBackBtn{ height:0.4rem; width:1.2rem; position:absolute;left:0.4rem;top:0.64rem; }
+.navBar .navBackBtn i{float:left;   height:0.4rem; width:0.4rem;background:url("../images/backBtn.png") no-repeat left top; background-size:100% 100%;}
+.navBar .navBackBtn span{float:left; height:0.4rem; line-height:0.4rem; font-size:0.28rem; }
+
+#con  .backBtn{height:0.4rem; line-height:0.4rem; padding-left:0.4rem; width:0.2rem; position: absolute;left:0.25rem;top:0.22rem;  z-index:100}
+#con  .backBtn>i{display:block; height:0.4rem; width:0.4rem;background:url("../images/backBtn.png") no-repeat left top;background-size:100% 100%;position:absolute;left:0;top:0;}
+
+/*车辆信息*/
+#con .carTitle{width:100%;height:1rem;line-height:1rem;text-align:center;font-size:0.36rem;font-weight:700;background-color:#fff;color:#000; margin-bottom:0.2rem;}
+
+/*车辆信息内容*/
+#con .carBox{margin-bottom:0.2rem;background:#fff;}
+#con .carBox .info{height:0.88rem;line-height:0.88rem;padding:0 0.34rem;border-bottom:1px solid #f3f3f3;}
+#con .carBox .info .left{float:left;font-size:0.3rem;font-weight:700;color:#000;}
+#con .carBox .info .right>img{float:right;display:inline-block;width:0.35rem;height:0.3rem;line-height:0.16rem;text-align:center;margin-top:0.32rem;font-weight:700;}
+#con .carBox .info .up{display:none;}
+#con .carBox .carIntr .txt{height:0.7rem;line-height:0.7rem;padding:0 0.32rem;border-bottom:1px solid #f3f3f3;}
+#con .carBox .carIntr .txt p{width:50%;float:left;font-size:0.26rem;}
+#con .carBox .carIntr{display:none;}

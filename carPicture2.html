@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="email=no" />
+  <title>牵台车</title>
+  <script type="text/javascript" src="js/public.js"></script>
+  <link rel="stylesheet" href="css/carPicture2.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+</head>
+
+<body>
+<div class="navBar">
+  <p class="navBackBtn backBtn">
+    <i></i>
+    <span>返回</span>
+  </p>
+  <p class="titleName">2017款 1.2T G CVT精英版</p>
+</div>
+<div id="con">
+  <!--导航切换-->
+  <div class="tabList">
+    <div class="tabListcon1 action">外观</div>
+    <div class="tabListcon2">内饰</div>
+    <div class="tabListcon3">空间</div>
+    <div class="tabListcon4">细节</div>
+    <div class="tabListcon5">其它</div>
+  </div>
+  <!--图片数量-->
+  <div class="pageNum">
+    <span>1</span>
+    <span>/</span>
+    <span>17</span>
+  </div>
+  <!--缩略图(小图)与焦点图(大图)-->
+  <div class="swiper-container gallery-top">
+    <div class="swiper-wrapper">
+    </div>
+  </div>
+  <div class="swiper-container gallery-thumbs">
+    <div class="swiper-wrapper">
+    </div>
+  </div>
+</div>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/template-web.js"></script>
+
+<script id="topdata" type="text/html">
+  {{each}}
+  <div num='num{{$value.detailtype}}' class="swiper-slide">
+    <div data-background="{{$value.bannerImage}}" class="swiper-lazy"></div>
+    <div class="swiper-lazy-preloader"></div>
+  </div>
+  {{/each}}
+</script>
+<script id="thumbsdata" type="text/html">
+  {{each}}
+  <div class="swiper-slide">
+    <div data-background="{{$value.bannerImage}}" class="swiper-lazy"></div>
+    <div class="swiper-lazy-preloader"></div>
+  </div>
+  {{/each}}
+</script>
+<script type="text/javascript">
+  $(function () {
+    //获取url?后的参数
+    (function ($) {
+      $.getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+      }
+    })(jQuery);
+    var mproductId = $.getUrlParam('productId');
+    var mCarModelId = $.getUrlParam('carModelId');
+    carModel();
+    /*调用后台车辆详细图接口,将图片渲染页面*/
+    var box;
+    $.ajax({
+      type: "GET",
+      async: false,
+      dataType: "json",
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      url: baseUrl + "product/image?product=" + mproductId + "&type=2",
+      success: function (data) {
+        box = data;
+      }
+    });
+    /**调用后台车辆详情查询接口，将数据渲染页面**/
+    function carModel() {
+      $.ajax({
+        type: "GET",
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8"
+        },
+        url: baseUrl + 'product/selectCarInfo?carModelId=' + mCarModelId + "&productId=" + mproductId,
+        success: function (data) {
+          var results = JSON.parse(data).result;
+          //console.log(results);
+          //动态获取产品名称
+          $('.titleName').html(results.productName);
+        },
+        error: function (data) {
+          console.log('失败');
+        }
+      });
+    }
+    console.log(box.result);
+    var topHtml = template('topdata', box.result);
+    var thumbsHtml = template('thumbsdata', box.result);
+    $(".gallery-top .swiper-wrapper").html(topHtml);
+    $(".gallery-thumbs .swiper-wrapper").html(thumbsHtml);
+    $(".pageNum span").eq(2).html(box.result.length);
+    //同类型选项卡转换
+    $('.tabListcon1').attr('num', $('div[num=num1]').length);
+    $('.tabListcon2').attr('num', $('div[num=num2]').length);
+    $('.tabListcon3').attr('num', $('div[num=num3]').length);
+    $('.tabListcon4').attr('num', $('div[num=num4]').length);
+    $('.tabListcon5').attr('num', $('div[num=num5]').length);
+    //返回
+    $(".backBtn").on("click", function () {
+      if (!isWeiXin() && equipment() == 'IOS') {
+        backToNative("popToView://backToNative");
+      } else {
+        history.back();
+      }
+    });
+    //获取导航图片的起始位置
+    $.fn.extend({
+      startIndex: function () {
+        var num = 0;
+        $(this).prevAll().each(function () {
+          if ($(this).attr("num")) {
+            num += Number($(this).attr("num"));
+          }
+        });
+        return num;
+      }
+    });
+    //焦点图与缩略图
+    var galleryTop = new Swiper('.gallery-top', {
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      spaceBetween: 10,
+      loopedSlides: box.result.length,
+      slidesPerView: 'auto',
+      initialSlide :0,
+      loop:true,
+      lazyLoading : true,
+      lazyLoadingInPrevNext : true,
+      lazyLoadingInPrevNextAmount : 1,
+      onSlideChangeEnd: function(swiper){
+        $(".pageNum span").eq(0).html(swiper.realIndex+1);
+        //选项卡的反向控制
+        setActiveTab(swiper.realIndex);
+        console.log(swiper.activeIndex);
+      }
+    });
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+      spaceBetween: 10,//间距
+      loop:true,//循坏
+      initialSlide :0,
+      centeredSlides: true,
+      loopedSlides:box.result.length,//总页数
+      slidesPerView: 'auto',
+      touchRatio: 0.2,
+      slideToClickedSlide: true,
+      lazyLoading : true,//懒加载
+      lazyLoadingInPrevNext : true,//设置为true允许将延迟加载应用到最接近的slide的图片（前一个和后一个slide）
+      lazyLoadingInPrevNextAmount : 1//设置在延迟加载图片时提前多少个slide
+    });
+    galleryTop.params.control = galleryThumbs;
+    galleryThumbs.params.control = galleryTop;
+
+    //选项卡切换
+    $(".tabList div").click(function () {
+      $(this).addClass("action").siblings().removeClass("action");
+      galleryThumbs.slideTo($(this).startIndex(), 500, true);//切换到第一个slide，速度为1秒
+    });
+    function setActiveTab(index){
+      //图片滑动时反向控制选项卡
+      var tabIndex = parseInt(box.result[index].detailtype)-1;//realIndex是从下标0开始的,所以要减1
+      $(".tabList div").eq(tabIndex).addClass("action").siblings().removeClass("action");
+    }
+  });
+</script>
+</body>
+</html>
+
+
+

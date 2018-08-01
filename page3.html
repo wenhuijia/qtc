@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="email=no" />
+    <title>申请资料填写</title>
+    <script type="text/javascript" src="js/public.js"></script>
+    <link rel="stylesheet" href="css/sm.min.css">
+    <link rel="stylesheet" href="css/page3.css">
+    <link rel="stylesheet" href="css/layer.css">
+    <style type="text/css">
+        .picker-columns {
+            height: 5.2rem;
+            width: 100%;
+        }
+
+        .picker-items {
+            font-size: 0.40rem;
+            background: #fff;
+            -webkit-mask-box-image: none;
+        }
+
+        .topPart {
+            height: 1.5rem;
+            width: 100%;
+            background: #fff;
+            position: relative;
+            color: #000;
+            border-bottom: 1px solid #ededed;
+        }
+
+        .top-title {
+            height: 1.5rem;
+            line-height: 1.5rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.36rem;
+        }
+
+        .close-picker {
+            display: block;
+            height: 0.6rem;
+            width: 1.4rem;
+            line-height: 0.6rem;
+            text-align: center;
+            font-size: 0.36rem;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .sureBtn {
+            position: absolute;
+            right: 0.4rem;
+            top: 0.45rem;
+            background: #ff795c;
+        }
+
+        .cancelBtn {
+            position: absolute;
+            left: 0.4rem;
+            top: 0.45rem;
+            background: #999;
+        }
+
+        .picker-center-highlight {
+            margin-top: -58px;
+        }
+
+        .picker-items-col-wrapper {
+            margin-top: -40px;
+        }
+        /* <!-- 自定义遮罩层 --> */
+        .myLayerBox{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+        }
+        .myLayer{
+            position: absolute;
+            width: 5.5rem;
+            height: 3rem;
+            background: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 0.1rem;
+            
+        }
+        .myLayer-content{
+            position: relative;
+            height: 2.1rem;
+            width: 100%;
+            border-bottom: 1px  solid #DADADA;
+        
+        }
+        .myLayer-content p{
+            width: 80%;
+            color: #333;
+            font-size: 0.3rem;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            border-radius: 0.1rem;
+        }
+        .myLayerButton  {
+            width: 100%;
+            text-align: center;
+            line-height: 0.9rem;
+            font-size: 0.36rem;
+            color: #000;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+     <!-- 返回 -->
+     <div class="TopGoBackNav">
+        <div class="navBarTop"></div>
+        <div class="navBarContent">
+            <i></i>
+            <p class="titleName">申请资料填写</p>
+        </div>
+    </div>
+    <!-- <div class="con-title con-title-black">
+        <p class="emptyBox emptyBox-black"></p>
+        <p class="backBtn"><i></i>返回</p>
+        <p class="txt">申请资料填写</p>
+    </div> -->
+    <div id="con" class="">
+        <div class="chooseCards">
+            <p class="txt1 ">请选择产品方案</p>
+            <div class="cards">
+                <p class="chooseCard card1 underLine">
+                    <span  class="txt">产品方案1（1+3）</span>
+                    <i id="1" class="checked product_scheme"></i>
+                </p>
+                <p class="chooseCard card2 underLine">
+                    <span  class="txt">产品方案2（3年期）</span>
+                    <i id="2" class="unchecked product_scheme"></i>
+                </p>
+            </div>
+        </div>
+        <div class="appInfo">
+            <p class="txt2">联系方式</p>
+            <p class="infoIn underLine">
+                <span><b>*</b> 姓名</span>
+                <input id="name" type="text" maxlength="20" oninput="" class="infoCon appayName" placeholder="请输入姓名">
+            </p>
+            <p class="infoIn underLine">
+                <span><b>*</b> 性别</span>
+                <input id="sex-picker" type="text" class="infoCon" placeholder="请选择性别">
+                <i class="inputBg"></i>
+            </p>
+            <p class="infoIn underLine">
+                <span><b>*</b> 电话</span>
+                <input id="tel" type="number" oninput="if(value.length>11)value=value.slice(0,11)" placeholder="请输入联系方式">
+            </p>
+            <p class="infoIn underLine">
+                <span><b>*</b> 城市</span>
+                <input id='city-picker' class="infoCon" value="北京市 东城区" type="text" readonly="" name="input_area" placeholder="点击选择所在城市"
+                />
+                <i class="inputBg"></i>
+            </p>
+            <p style="display:none;" class="infoIn underLine">
+                <span>推荐人工号（非必填）</span>
+                <input id="referrer_no" type="text" placeholder="请输入推荐人工号">
+            </p>
+            <!--<p class="infoIn underLine">-->
+            <!--<span><b>*</b> 城市</span>-->
+            <!--<input id='city-picker1' class="infoCon" value="上海市 黄浦区" type="text" readonly="" name="input_area_1" placeholder="点击选择所在城市"/>-->
+
+            <!--<i class="inputBg"></i>-->
+            <!--</p>-->
+            <p class="txtInput">
+                <textarea name="" id="said" cols="30" rows="10" placeholder="点击输入您的留言"></textarea>
+            </p>
+        </div>
+        <button class="submitBtn" type="button">立即申请</button>
+        
+    </div>
+    <!-- 自定义遮罩层 -->
+    <div class="myLayerBox">
+        <div class="myLayer">
+            <div class="myLayer-content">
+                <p class="">夺金 土木工程远远土木工程远远土木工程远远土木工程远远土木工程远远</p>
+            </div>
+            <div class="myLayerButton">
+                <p class="myLayerButton">知道了</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/zepto/zepto.js"></script>
+    <script src="js/zepto/touch.js"></script>
+    <script src="js/zepto/fx.js"></script>
+    <script src="js/sm.min.js"></script>
+    <script src="js/sm-city-picker.js"></script>
+    <script src="js/layer.js"></script>
+    <!-- <script src="./js/jquery-1.7.2.min.js"></script> -->
+
+    <script type="text/javascript">
+            //微信及IOS判断
+            if(isWeiXin()||equipment()=="Android"){
+                $('.TopGoBackNav').hide();
+                $('#con').css("padding-top","0");
+            };
+            //获取url中"?"符后的字串 
+            function GetRequest() {
+                var url = location.search;
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            };
+            var Request = GetRequest();
+            var plans = Request['plans'];
+            var productId = Request['productId'];
+            //如果只有一种方案就不用选  
+            if(plans=="false"){
+                $('.chooseCards').addClass("hide");
+            };
+            // 判断是否是微信
+            if (isWeiXin()) {
+                $(".con-title").removeClass("con-title-black");
+                $("#con").css({
+                    "padding-top": "0"
+                });
+                $(".emptyBox").css({
+                    "display": "none"
+                });
+                $(".backBtn").css({
+                    "top": "0.24rem"
+                });
+                $(".backBtn i").addClass("icon2");
+            } else {
+                // 判断是否是安卓
+                var isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf(
+                    'Adr') > -1;
+                if (isAndroid) {
+                    $(".emptyBox").css({
+                        "display": "none"
+                    });
+                    $(".backBtn").css({
+                        "top": "0.24rem"
+                    });
+                }
+            }
+
+            $(".chooseCards .chooseCard").on("click", function () {
+                $(this).find("i").removeClass("unchecked").addClass("checked");
+                $(this).siblings().find("i").removeClass("checked").addClass("unchecked");
+            });
+
+
+            //返回
+            $(" .backBtn").on("click", function () {
+                history.back();
+            });
+ 
+
+        // 手机号码验证
+        var reg1 = /^1[1][2][3|4|5|7|8]\d{9}$/ig;
+        $("#tel").on("blur", function () {
+            var $telNum = $("#tel").val();
+            if (!reg1.test($telNum)) { // 手机号码格式错误
+                layer.open({
+                    content: '请正确填写预约信息',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+            }
+        });
+
+        // 选择性别
+        $("#sex-picker").picker({
+            toolbarTemplate: '<header class="topPart">\
+                <button class=" sureBtn  close-picker">确定</button>\
+                <div class="top-title">选择性别</div>\
+                </header>',
+            cols: [{
+                textAlign: 'center',
+                values: ['男', '女']
+            }]
+        });
+
+        // 城市选择器
+        $("#city-picker").cityPicker({
+            toolbarTemplate: '<header class="topPart">\
+                <button class=" sureBtn  close-picker">确定</button>\
+                <div class="top-title">选择所在城市</div>\
+                </header>'
+        });
+        $("#city-picker1").cityPicker({
+            toolbarTemplate: '<header class="topPart">\
+                <button class=" sureBtn  close-picker">确定</button>\
+                <div class="top-title">选择所在城市</div>\
+                </header>'
+        });
+
+        $(".infoCon").each(function () {
+            $(this).on("blur", function () {
+                if ($(this).val().replace(/\s*/g, "").length == 0) {
+                    layer.open({
+                        content: '请正确填写预约信息',
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
+                }
+            })
+        });
+        $(".submitBtn").on("click", function () {
+            //网络判断
+            if(!navigator.onLine){
+                layer.open({
+                    content: '暂无网络信号，请检查您的网络!',
+                    skin: 'msg',
+                    time:3 //2秒后自动关闭
+                });
+                return;
+            };
+            //姓名正确判断 
+            if(!/^[A-Za-z\u4e00-\u9fa5]*$/.test($(".appayName").val()) || $(".appayName").val().length<2){
+                layer.open({
+                    content: '请输入正确的姓名!',
+                    skin: 'msg',
+                    time:3 //2秒后自动关闭
+                });
+                return;
+                // console.log("不行")
+            };
+            //手机号判断
+            if (!/^0?1[1|2|3|4|5|6|7|8|9][0-9]\d{8}$/.test($('#tel').val())) {
+                layer.open({
+                    content: '请输入正确的手机号码!',
+                    skin: 'msg',
+                    time: 3 //2秒后自动关闭
+                });
+                return;
+            }
+
+            var name = $("#name").val().replace(/\s/g,"");
+            var tel = $("#tel").val();
+            var sexText = $("#sex-picker").val();
+            var sex =  sexText=="男"?"1":"0";
+            var city = $("#city-picker").val();
+            var reg1 = /^1[1][2][3|4|5|7|8]\d{9}$/ig;
+            var remarks = $("#said").val();
+            var referrer_no = $("#referrer_no").val();
+            var product_scheme;
+            if($('.chooseCards').hasClass("hide")){
+                product_scheme="2";//方案2  只有一种的情况下就是方案2
+             
+            }else{
+                $('.product_scheme').each(function(i,v){
+                    if($(this).hasClass("checked")){
+                        product_scheme = $(this).attr("id");
+                    };
+                });
+            };
+            //产生一个随机数传后台 自定义 0 - 99999
+            var randomNumber = 50 + Math.floor((Math.random()*99999));
+
+            var account = "WX"+randomNumber;
+            var data = {
+                'account':account,//用户账号
+                'programId': product_scheme,// 方案id
+                'productId': productId,//产品id 
+                'name': name,
+                'sex': sex,
+                'telePhone': tel,
+                'storeId':"0",//门店id
+                // 'city': city,
+               
+                'leaveWord': remarks, //留言
+            };
+            console.log("发送",data)
+            var pass = true;
+            if (name  && tel && sex &&pass) {
+                console.log("发了")
+                $("this").attr("disabled", "disabled"); // 禁止多次提交
+                pass = false;
+                // 提交后台
+                $.ajax({
+                        url: jumpUrl+'rcbms/product/addWXAppointment',
+                        // url: 'http://10.81.2.48:8088/rcbms/product/addWXAppointment',
+                        type: "post",
+                        data: JSON.stringify(data),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data)
+                            return;
+                            if (data.returnCode == '200') {
+                                window.location.href = 'page4.html';
+                            }else if(data.returnCode == '201'){
+                               $('.myLayer-content p').text("预约失败");
+                               $('.myLayerBox').show();
+                            }else if(data.returnCode == '202'){
+                               $('.myLayer-content p').text("当前用户已预约该方案车型");
+                               $('.myLayerBox').show();
+                            }
+                        },
+                        error:function(err){
+                            pass = true;
+                            $('.myLayer-content p').text("网络异常，请稍后再试");
+                            $('.myLayerBox').show();
+                        }
+                    });
+
+            } else {
+                layer.open({
+                    content: '请确保信息完整再提交!',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+            }
+        });
+
+        // console.log(window.history);
+        $('.myLayerButton p').on('click', function () {
+            $('.myLayerBox').hide();
+            return;
+        });
+        //返回
+        $('.navBarContent i').on('click', function () {
+            history.back();
+        });
+    </script>
+</body>
+
+</html>

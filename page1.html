@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="email=no" />
+    <title>牵台车</title>
+    <script type="text/javascript" src="js/public.js"></script>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/page1.css">
+</head>
+<body>
+    <div class="navBar">
+        <p class="titleName">牵台车</p>
+    </div>
+    <div id="con">
+        <!--轮播图片-->
+        <div class="topBanner">
+            <img class="banImg" src="images/page1-banner.png" alt="">
+        </div>
+        <!--首页产品类型-->
+        <div class="proCards clearfix">
+            <a class="card card1" href="page2.html">
+                <div class="carImg">
+                    <img  src="images/card1.jpg" alt="">
+                    <div class="InfoTxt">
+                        <img src="images/hotSale.png" alt="">
+                        <p class="sale-txt sp">含购置税</p>
+                        <p class="sale-txt sp">送一年保险</p>
+                        <p class="sale-txt">含购置税</p>
+                    </div>
+                </div>
+                <p class="titleName">雷凌2017款 1.2T G CVT精英版</p>
+                <div class="price">
+                    <div class="left">
+                        <p class="txt">
+                            <span>首期支付</span>
+                        </p>
+                        <span class="num moneyNum">¥12600</span>
+                    </div>
+                    <div class="right">
+                        <p class="txt">
+                            <span>首年</span>
+                        </p>
+                        <span class="num moneyNum">¥2798</span>
+                    </div>
+                </div>
+            </a>
+            <a class="card card2" href="JavaScript:;">
+                <div class="carImg">
+                    <img  src="images/card1.jpg" alt="">
+                    <div class="InfoTxt">
+                        <img src="images/hotSale.png" alt="">
+                        <p class="sale-txt sp">含购置税</p>
+                        <p class="sale-txt sp">送一年保险</p>
+                        <p class="sale-txt">含购置税</p>
+                    </div>
+                </div>
+                <p class="titleName">凯美瑞 2016款 2.0E D-4S精英版</p>
+                <div class="price">
+                    <div class="left">
+                        <p class="txt">
+                            <span>首期支付</span>
+                        </p>
+                        <span class="num moneyNum">¥18700</span>
+                    </div>
+                    <div class="right">
+                        <p class="txt">
+                            <span>首年</span>
+                        </p>
+                        <span class="num moneyNum">¥4388</span>
+                    </div>
+                </div>
+            </a>
+            <a class="card card3" href="JavaScript:;">
+                <div class="carImg">
+                    <img  src="images/card1.jpg" alt="">
+                    <div class="InfoTxt">
+                        <img src="images/hotSale.png" alt="">
+                        <p class="sale-txt sp">含购置税</p>
+                        <p class="sale-txt sp">送一年保险</p>
+                        <p class="sale-txt">含购置税</p>
+                    </div>
+                </div>
+                <p class="titleName">雅阁 2016款 2.0L CVT 舒享版</p>
+                <div class="price">
+                    <div class="left">
+                        <p class="txt">
+                            <span>首期支付</span>
+                        </p>
+                        <span class="num moneyNum">¥16900</span>
+                    </div>
+                    <div class="right">
+                        <p class="txt">
+                            <span>首年</span>
+                        </p>
+                        <span class="num moneyNum">¥3998</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            // 判断是否是微信
+            if(isWeiXin()){
+                $(".navBar").hide();
+                $("#con").css({"padding-top":"0"});
+            } else {
+                // 判断是否是安卓
+                var isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1;
+                if(isAndroid){
+                    $(".navBar").css({"padding-top":"0"});
+                }
+            }
+
+            // 钱数加逗号
+            $(".moneyNum").each(function(index , ele){
+                var str = $(this).html();
+                console.log(str);
+                $(this).html(addComma(str));
+            });
+
+            //添加逗号
+            function addComma(str){
+                var str1 = str.substring(1);
+                return parseFloat(str1).toLocaleString();
+            }
+
+           // 轮播
+           var mySwiper = new Swiper ('.swiper-container', {
+             direction: 'horizontal',
+             loop: true,
+
+             // 如果需要分页器
+             pagination: '.swiper-pagination'
+
+          });
+
+
+        })
+    </script>
+</body>
+</html>

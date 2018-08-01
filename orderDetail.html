@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="email=no" />
+    <title>牵台车</title>
+    <script type="text/javascript" src="js/public.js"></script>
+    <link rel="stylesheet" href="css/orderDetail.css">
+</head>
+<body>
+
+    <div id="con">
+        <div class="con-title con-title-black">
+            <p class="emptyBox emptyBox-black"></p>
+            <p class="backBtn" ><i></i>返回</p>
+            <p class="txt">我的预约</p>
+        </div>
+        <div class="order-con">
+            <div class="order-car">
+                <p class="car-img">
+                    <img src="images/order-001.png" alt="">
+                </p>
+                <div class="car-name">
+                    <p class="name">雷凌2017款 1.2T G CVT精英版雷凌2017款 1.2T G CVT精英版</p>
+                    <p class="order-time">预约时间 : <span>2017-12-31</span></p>
+                </div>
+            </div>
+            <div class="order-plan">
+                <div class="box box1 boxHide">
+                    <p class="plan-name">--方案一(1+3)--</p>
+                    <div class="planImg planImg1">
+                        <img src="images/plan1.png" alt="">
+                        <p class="txt txt1">首期支付</p>
+                        <p class="txt txt2">一年租金</p>
+                        <p class="txt txt3">尾款支付<br>或再分期三年</p>
+                        <p class="txt txt4">车辆<br>价值</p>
+                    </div>
+                    <div class="priceDetail">
+                        <p class="p-title">
+                            <span class="left"></span>
+                            <span class="middle">先用一年</span>
+                            <span class="right"></span>
+                        </p>
+                        <div class="detail detail1">
+                            <p class="txt1">首付10%</p>
+                            <p class="txt2 moneyNum">¥12600</p>
+                            <p class="txt3">月供</p>
+                            <p class="txt4 moneyNum">¥2798</p>
+                            <p class="txt5">含购置税/含保险等费用/含购置税/含保险等费用/含购置税/含保险等费用/含购置税/含保险等费用/含购置税/含保险等费用</p>
+                        </div>
+                        <p class="p-title p-title2">
+                            <span class="left"></span>
+                            <span class="middle">尾款购车</span>
+                            <span class="right"></span>
+                        </p>
+                        <div class="detail detail2">
+                            <p class="txt1">分期付款</p>
+                            <p class="txt2"><span class="moneyNum">¥2946</span>×<span>36月</span></p>
+                            <p class="txt3">一次性付清:<span class="moneyNum">¥85000</span></p>
+                            <p class="txt4">月利率: 0.688%</p>
+                            <p class="txt5">尾款可选方案：一、1年后还车（限公里数）<br/> 二、1年后付尾款购车      三、1年后尾款再分期三年 </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box box2 ">
+                    <p class="plan-name">--方案二(3年期)--</p>
+                    <div class="planImg planImg2">
+                        <img src="images/plan2.png" alt="">
+                        <p class="txt txt1">三年月租金</p>
+                        <p class="txt txt2">首付租金</p>
+                        <p class="txt txt3">车辆价值</p>
+                    </div>
+                    <table id="priceTab" cellpadding="0" cellspacing="0">
+                        <tr class="firstTr">
+                            <th>首付</th>
+                            <th>首期支付</th>
+                            <th>月租金</th>
+                        </tr>
+                        <tr>
+                            <td class="list1">10%</td>
+                            <td class="list2 moneyNum">¥12680</td>
+                            <td class="list3 moneyNum">¥3622</td>
+                        </tr>
+                        <tr>
+                            <td class="list1">20%</td>
+                            <td class="list2 moneyNum">¥25360</td>
+                            <td class="list3 moneyNum">¥3170</td>
+                        </tr>
+                        <tr>
+                            <td class="list1">30%</td>
+                            <td class="list2 moneyNum">¥38040</td>
+                            <td class="list3 moneyNum">¥2717</td>
+                        </tr>
+                    </table>
+                    <div class="txt11 ">
+                        <p class="left">
+                            <span>说明:</span>
+                        </p>
+                        <p class="right">
+                            <span>1、三年租赁期，到期过户</span>
+                            <span>2、含购置税，保险等费用</span>
+                            <span>3、含购置税，保险等费用</span>
+                            <span>4、含购置税，保险等费用</span>
+                            <span>5、含购置税，保险等费用</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/zepto/zepto.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //返回
+            $(".backBtn").on("click",function(){
+                backToNative("popToView://backToNative");
+            });
+        })
+    </script>
+
+</body>
+</html>
