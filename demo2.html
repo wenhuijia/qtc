@@ -8,10 +8,14 @@
 </head>
 <body>
     <div id="aa">点我</div>
+    <div id="back">返回</div>
 </body>
 </html>
 <script>
     document.getElementById('aa').onclick = function(){
-       location.href = "demo2.html"
+       location.href = "demo3.html"
+    }
+    document.getElementById('back').onclick = function(){
+       history.back()
     }
 </script>
